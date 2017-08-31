@@ -2,7 +2,8 @@ var config = {
   postUrl     : "slack webhook url",
   postChannel : "#test_channel",
   username    : "webhook-bot",
-  iconEmoji   : ":ghost:",
+  iconUrl     : "http://example.com/images/example.png"
+//iconEmoji   : ":ghost:",
   linkNames   : 1,
   mention     : "@user_name ",
   color       : {
@@ -60,7 +61,8 @@ function sendHttpPost(pretext, message) {
   var jsonData = {
     channel    : config.postChannel,
     username   : config.username,
-    icon_emoji : config.iconEmoji,
+    icon_url   : config.iconUrl
+//  icon_emoji : config.iconEmoji,
     attachments : [
       {
         color   : config.color.yellow,
