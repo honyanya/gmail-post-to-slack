@@ -1,3 +1,11 @@
+/*
+ * Gmail の内容を Slack へ通知
+ * 
+ * @slack_team team_name
+ * @slack_channel #channel_name
+ * @gmail_address example@gmail.com
+ */
+
 var config = {
   postUrl     : "slack webhook url",
   postChannel : "#test_channel",
