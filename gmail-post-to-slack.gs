@@ -1,8 +1,17 @@
+/*
+ * Gmail の内容を Slack へ通知
+ * 
+ * @slack_team team_name
+ * @slack_channel #channel_name
+ * @gmail_address example@gmail.com
+ */
+
 var config = {
   postUrl     : "slack webhook url",
   postChannel : "#test_channel",
   username    : "webhook-bot",
-  iconEmoji   : ":ghost:",
+  iconUrl     : "http://example.com/images/example.png"
+//iconEmoji   : ":ghost:",
   linkNames   : 1,
   mention     : "@user_name ",
   color       : {
@@ -47,6 +56,7 @@ function gmailPostToSlack() {
         "Body : "                                            + "\n" + 
           messages[j].getPlainBody()                         + "\n" + 
         "--------------------------------------------------------------------------------" + "\n"
+      Logger.log(message)
       
       // slack 通知              
       sendHttpPost(pretext, message);
@@ -60,7 +70,8 @@ function sendHttpPost(pretext, message) {
   var jsonData = {
     channel    : config.postChannel,
     username   : config.username,
-    icon_emoji : config.iconEmoji,
+    icon_url   : config.iconUrl
+//  icon_emoji : config.iconEmoji,
     attachments : [
       {
         color   : config.color.yellow,
@@ -80,7 +91,7 @@ function sendHttpPost(pretext, message) {
 }
 
 function formatDateTime(date) {
-  return date.getFullYear() + "/" + date.getMonth() + 1 + "/" + date.getDate() + " " + 
+  return date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate() + " " + 
     date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
 }
 
