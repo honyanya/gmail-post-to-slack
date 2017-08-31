@@ -48,6 +48,7 @@ function gmailPostToSlack() {
         "Body : "                                            + "\n" + 
           messages[j].getPlainBody()                         + "\n" + 
         "--------------------------------------------------------------------------------" + "\n"
+      Logger.log(message)
       
       // slack 通知              
       sendHttpPost(pretext, message);
